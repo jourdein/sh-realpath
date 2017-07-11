@@ -58,14 +58,14 @@ canonicalize_path() {
 }
 
 _canonicalize_dir_path() {
-    (cd "$1" 2>/dev/null && pwd -P)
+    (builtin cd "$1" 2>/dev/null && pwd -P)
 }
 
 _canonicalize_file_path() {
     local dir file
     dir=$(dirname -- "$1")
     file=$(basename -- "$1")
-    (cd "$dir" 2>/dev/null && printf '%s/%s\n' "$(pwd -P)" "$file")
+    (builtin cd "$dir" 2>/dev/null && printf '%s/%s\n' "$(pwd -P)" "$file")
 }
 
 # Optionally, you may also want to include:
